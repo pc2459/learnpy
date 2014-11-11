@@ -79,3 +79,8 @@ print "{} was a {} who had {} ships".format(name, trade, num_ships)
 
 bigstring = "a tralala lalley here down in the valley your beards are a-wagging"
 print bigstring.find("beards") #returns index location of search, otherwise -1
+
+
+# TESTING GIT
+
+# MAKING A CHANGE
