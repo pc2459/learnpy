@@ -86,3 +86,5 @@ print bigstring.find("beards") #returns index location of search, otherwise -1
 # MAKING A CHANGE
 
 # OMG I THINK THAT MAY HAVE WORKED
+
+# ADDING VERSUS COMMITTING 
