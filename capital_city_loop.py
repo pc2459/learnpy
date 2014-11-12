@@ -11,18 +11,18 @@ capital = capitals_dict[state]
 
 capital = capital.lower()
 
-print "The state is {}".format(state)
+print "The state is {}.".format(state)
 
 while game == 1:
 	answer = raw_input("What is its capital? ")
 	answer = answer.lower()
 	if answer == capital:
 		game = 0
-		print "YAY"
+		print "Correct!"
 	elif answer == "exit":
 		# Return formatting
 		capital = capitals_dict[state]
-		print "The answer was {}".format(capital)
+		print "The answer was {}.".format(capital)
 		print "Goodbye."
+		game = 0
 
-print "Correct!"
