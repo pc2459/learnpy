@@ -2,12 +2,12 @@
 cat_list = {}
 
 # append like 10 cats to a dictionary 
-for i in range (1,100):
+for i in range (1,101):
 	cat_list[i] = "off"
 
 i = 1
 
-while i < 100:
+while i <= 100:
 	for cat in cat_list:
 		# if you visit the cat on round N 
 		if cat % i == 0: 
