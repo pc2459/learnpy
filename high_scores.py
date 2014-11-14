@@ -10,17 +10,20 @@ scores = {}
 path = "/Users/Fo/Dropbox/LearnPython/repo"
 
 # open the file
-with open(os.path.join(path,"scores.csv"),rb) as file:
+with open(os.path.join(path,"scores.csv"),"rb") as file:
 	# create a CSV reader
 	reader = csv.reader(file)
-	for row in reader:
+	for name,score in reader:
+		#convert scores to int
+		score = int(score) 
 		# add if new
-		if row[0] not in scores.keys():
-			scores[row[0]] = row[1]
+		if name not in scores.keys():
+			scores[name] = score
 		# append higher score if not
 		else:
-			if scores[row[0]] < row[1]:
-				scores[row[0]] = row[1]
+			if scores[name] < score:
+				scores[name] = score
 
-print scores
+for key in sorted(scores):
+	print key, scores[key]
 
