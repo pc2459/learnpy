@@ -1,6 +1,7 @@
 import argparse
 import csv
 import os
+import math
 import sys
 
 # create a parser to handle command-line arguments
@@ -41,6 +42,27 @@ with open(args.i) as input:
 if total_rows <= rows:
 	print "The split number is more than or equal to the size of the CSV to split"
 	sys.exit(0)
+
+##########################
+
+#find out the number of CSVs needed
+segments = math.ceil(total_rows/rows)
+
+#open the input and begin to read 
+input = open(args.i, "r") 
+reader = csv.reader(input)
+
+#store the header
+header = reader.next()
+
+# create an list to store header + N rows 
+templist = []
+
+
+
+input.close()
+
+
 
 
 
