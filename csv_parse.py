@@ -64,53 +64,55 @@ if total_rows <= rows:
 
 #find out the number of CSVs needed
 segments = math.ceil(total_rows/rows)
-print segments
 
 #open the input and begin to read 
 input = open(args.i, "r") 
 reader = csv.reader(input)
 
-#store the header
+# Store the header
 header = reader.next()
 
-# create an list to store header + N rows 
+# Create an list to store header + N rows 
 templist = []
-
 current = 1
+rownum = 0
 
 
 while current <= segments:
 
-	#add rows to the templist
+	# Add rows to the templist
 	for i in range(rows):
 
 		try: 
 			line = reader.next()
 			templist.append(line)
+			rownum += 1
 		except StopIteration:
 			pass
 		
-		print "Added to list"
 
-	#now write the templist to an output
+	# Write the templist to an output
 	with open(args.o+str(current)+".csv", "wb") as output:
 		writer = csv.writer(output)
+
+		# Write in the header
+		writer.writerow(header)
+
+		# Write in the remainder of the lines
 		for line in templist:
 			writer.writerow(line)
-			print "Wrote to output"
+
+	# Print out message to the user
+
+	print "Chunk written to {} with {} lines".format(args.o+str(current)+".csv",rownum)
+
+	# Reset the templist, row counters
 	templist = []
+	rownum = 0
+
+	# Move on to the next output file
 	current += 1
-	print "incremented current"
 
 
 
 input.close()
-
-
-
-
-
-
-print args.i
-print args.o
-print args.r
