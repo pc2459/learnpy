@@ -14,6 +14,8 @@ Default settings:
 3. the default delimiter is a comma
 """
 
+from __future__ import division
+
 import argparse
 import csv
 import os
@@ -76,11 +78,18 @@ templist = []
 
 current = 1
 
+
 while current <= segments:
+
+	#add rows to the templist
 	for i in range(rows):
-		line = reader.next()
-		#add rows to the templist
-		templist.append(line)
+
+		try: 
+			line = reader.next()
+			templist.append(line)
+		except StopIteration:
+			pass
+		
 		print "Added to list"
 
 	#now write the templist to an output
