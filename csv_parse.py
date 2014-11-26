@@ -1,3 +1,19 @@
+"""
+Write a script that will take three required command line arguments - input_file,
+output_file, and the row_limit. From those arguments, split the input CSV into
+multiple files based on the row_limit argument.
+
+Arguments:
+1. -i: input file name
+2. -o: output file name
+3. -r: row limit to split
+
+Default settings:
+1. output_path is the current directory
+2. headers are displayed on each split file
+3. the default delimiter is a comma
+"""
+
 import argparse
 import csv
 import os
