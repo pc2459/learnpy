@@ -16,7 +16,6 @@ parser.add_argument('-r', action='store')
 args = parser.parse_args()
 
 total_rows = 0
-rows = 0
 
 # check to see if rows is an integer
 try:
@@ -47,6 +46,7 @@ if total_rows <= rows:
 
 #find out the number of CSVs needed
 segments = math.ceil(total_rows/rows)
+print segments
 
 #open the input and begin to read 
 input = open(args.i, "r") 
@@ -57,6 +57,25 @@ header = reader.next()
 
 # create an list to store header + N rows 
 templist = []
+
+current = 1
+
+while current <= segments:
+	for i in range(rows):
+		line = reader.next()
+		#add rows to the templist
+		templist.append(line)
+		print "Added to list"
+
+	#now write the templist to an output
+	with open(args.o+str(current)+".csv", "wb") as output:
+		writer = csv.writer(output)
+		for line in templist:
+			writer.writerow(line)
+			print "Wrote to output"
+	templist = []
+	current += 1
+	print "incremented current"
 
 
 
