@@ -61,3 +61,32 @@ title = match_results.group()
 title = re.sub("<.*?>", "", title) # remove HTML tags
 
 print title
+
+### Beautiful Soup
+
+from bs4 import BeautifulSoup
+
+url2 = "https://realpython.com/practice/profiles.html"
+profiles_page = urlopen(url2)
+profiles_text = profiles_page.read()
+
+print profiles_text
+
+soup = BeautifulSoup(profiles_text)
+
+# BS's get_text() function strips out HTML tags
+print soup.get_text()
+
+# get only hrefs of as 
+# then get full texts of those hrefs
+baseurl = "https://realpython.com/practice/"
+
+a_list = soup.find_all("a")
+for a in a_list:
+	urlpage = urlopen(os.path.join(baseurl,a["href"]))
+	urltext = urlpage.read()
+	soup2 = BeautifulSoup(urltext)
+	print soup2.get_text()
+
+
+
