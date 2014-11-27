@@ -31,6 +31,8 @@ text = page.read()
 
 print text
 
+# Find only stuff between a specific set of tags using indices 
+
 start_tag = "<title>"
 end_tag = "</title>"
 
